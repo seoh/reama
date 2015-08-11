@@ -1,37 +1,25 @@
-import React from 'react'
-import { AppBar, Styles } from 'material-ui'
-import IssueList from './IssueList'
-
-const ThemeManager = new Styles.ThemeManager();
+import React from 'react';
+import Issue from './Issue';
+import { list } from '../utils/get';
 
 export default class Main extends React.Component {
   componentDidMount() {
-    fetch("https://api.github.com/repos/seoh/reama/issues")
+    list()
+    // fetch('issues.json')
     .then((data)=> data.json())
     .then((json)=> {
       this.setState({data: json});
     });
   }
 
-  getChildContext() {
-    return {
-      muiTheme: ThemeManager
-    }
-  }
-
   render() {
     return (
-      <div>
-        <AppBar title="Ask Me Anything" />
-        { this.state ?
-          <IssueList {...this.state} />
-        : <div> waiting... </div>
+      <main className="main">
+        { this.state
+            ?  this.state.data.map((datum, index) =>
+                 <Issue data={datum} key={index} />)
+            :  <Issue data={{url: '', title: '', body: ''}} />
         }
-      </div>)
+      </main>);
   }
 }
-
-Main.childContextTypes = {
-  muiTheme: React.PropTypes.object
-}
-

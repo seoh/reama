@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div id="app"></div>
+  <header class="head">
+    <h1 class="head-title u-fl"><a href="/blog/">[WIP] devthewild</a> ask me anything</h1>
+    <nav class="head-nav u-fr">
+      <ul class="head-nav__list">
+        <li class="head-nav__item">
+          <a href="/blog/" class="head-nav__link">Home</a>
+        </li>
+        <li class="head-nav__item">
+          <a href="/blog/archives" class="head-nav__link">Archives</a>
+        </li>
+        <li class="head-nav__item">
+          <!-- #TODO move anchor to root `/`. when? i dont know. -->
+          <a href="/reama" class="head-nav__link">AMA</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div id="app" />
+  <div class="foot">
+    <div class="foot-copy u-fl">&copy; 2015 Seoh Char</div>
+  </div>
   <script src="bundle.js"></script>
 </body>
 </html>
